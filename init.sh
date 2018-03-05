@@ -65,7 +65,7 @@ check_for_apps() {
     for APP in "${APPS[@]}"; do
         echo "Checking to see if $APP is installed"
         if ! [ -x "$(command -v $APP)" ]; then
-            install $APP
+            install_app $APP
         else
             echo "$APP is installed."
         fi
