@@ -25,8 +25,11 @@ DIRS=(
     '/.vim/autoload'
     '/.vim/colors'
     )
-        
 
+install_vimrc() {
+    echo "copying vimrc"
+    cp ./.vimrc ${HOME}/.vimrc
+}
 
 install_app() {
 		# This could def use community support
@@ -94,7 +97,8 @@ main() {
     check_for_apps \
     && install_pathogen \
     && check_for_dirs \
-    && check_for_repos
+    && check_for_repos \
+    && install_vimrc
 }
 
 main
