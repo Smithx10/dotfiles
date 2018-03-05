@@ -35,8 +35,8 @@ install_vimrc() {
 
 install_app() {
 		# This could def use community support
-		if [ -x "$(command -v apt)" ]; then
-			sudo apt install $1 -y
+		if [ -x "$(command -v apt-get)" ]; then
+			sudo apt-get update && sudo apt-get install $1 -y
 
 		elif [ -x "$(command -v brew)" ]; then
 			brew install $1
