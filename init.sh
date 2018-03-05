@@ -27,6 +27,8 @@ DIRS=(
     )
 
 install_vimrc() {
+    echo "cloning Smithx10/dotfiles"
+    git clone https://github.com/Smithx10/dotfiles/blob/master/init.sh ./
     echo "copying vimrc"
     cp ./.vimrc ${HOME}/.vimrc
 }
