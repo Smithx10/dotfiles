@@ -32,7 +32,7 @@ install_vimrc() {
     echo "copying vimrc"
     cp ./dotfiles/.vimrc ${HOME}/.vimrc
     echo "copying theme"
-    cp ./dotfiles/onedark.vim ${HOME}/.vim/colors/ondark.vim
+    cp ./dotfiles/onedark.vim ${HOME}/.vim/colors/onedark.vim
 }
 
 install_app() {
