@@ -4,7 +4,7 @@ APPS=(
     'curl'
     'git' 
     'tmux'
-    'vim' 
+    'vim'
     )
 REPOS=(
     'https://github.com/Valloric/YouCompleteMe'
@@ -46,8 +46,10 @@ compile_YCM() {
 install_YCM_Prereqs() {
     # This could def use community support
     if [ -x "$(command -v apt-get)" ]; then
+        curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         sudo apt-get install -y build-essential \
                                 cmake \
+                                nodejs \
                                 python-dev \
                                 python3-dev
 
