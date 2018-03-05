@@ -8,7 +8,6 @@ APPS=(
     )
 REPOS=(
     'https://github.com/Valloric/YouCompleteMe'
-    'https://github.com/jiangmiao/auto-pairs'
     'https://github.com/kien/ctrlp.vim' 
     'https://github.com/Yggdroot/indentLine'
     'https://github.com/scrooloose/nerdcommenter'
