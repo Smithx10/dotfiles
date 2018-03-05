@@ -39,7 +39,7 @@ install_vimrc() {
 compile_YCM() {
     cd ${HOME}/.vim/bundle/YouCompleteMe
     git submodule update --init --recursive
-    install.py --all
+    ./install.py --all
 }
 
 
