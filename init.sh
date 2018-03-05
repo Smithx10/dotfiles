@@ -31,6 +31,8 @@ install_vimrc() {
     git clone https://github.com/Smithx10/dotfiles
     echo "copying vimrc"
     cp ./dotfiles/.vimrc ${HOME}/.vimrc
+    echo "copying theme"
+    cp ./dotfiles/onedark.vim ${HOME}/.vim/colors/ondark.vim
 }
 
 install_app() {
