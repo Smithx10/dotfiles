@@ -27,6 +27,7 @@ DIRS=(
     )
 
 install_vimrc() {
+    cd ${HOME}
     echo "cloning Smithx10/dotfiles"
     git clone https://github.com/Smithx10/dotfiles
     echo "copying vimrc"
@@ -35,22 +36,50 @@ install_vimrc() {
     cp ./dotfiles/onedark.vim ${HOME}/.vim/colors/onedark.vim
 }
 
+compile_YCM() {
+    cd ${HOME}/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
+    install.py --all
+}
+
+
+install_YCM_Prereqs() {
+    # This could def use community support
+    if [ -x "$(command -v apt-get)" ]; then
+        sudo apt-get install -y build-essential \
+                                cmake \
+                                python-dev \
+                                python3-dev
+
+    elif [ -x "$(command -v brew)" ]; then
+        echo "placeholder for brew deps"
+
+    elif [ -x "$(command -v pkg)" ]; then
+        echo "placeholder for pkg deps"
+
+    elif [ -x "$(command -v pacman)" ]; then
+        echo "placeholder for pacman deps"
+    else
+        echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
+    fi 
+}
+
 install_app() {
-		# This could def use community support
-		if [ -x "$(command -v apt-get)" ]; then
-			sudo apt-get update && sudo apt-get install $1 -y
+    # This could def use community support
+    if [ -x "$(command -v apt-get)" ]; then
+            sudo apt-get update && sudo apt-get install $1 -y
 
-		elif [ -x "$(command -v brew)" ]; then
-			brew install $1
+    elif [ -x "$(command -v brew)" ]; then
+            brew install $1
 
-		elif [ -x "$(command -v pkg)" ]; then
-			sudo pkg install $1
+    elif [ -x "$(command -v pkg)" ]; then
+            sudo pkg install $1
 
-		elif [ -x "$(command -v pacman)" ]; then
-			sudo pacman -S $1
-		else
-                    echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
-		fi 
+    elif [ -x "$(command -v pacman)" ]; then
+            sudo pacman -S $1
+    else
+        echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
+    fi 
 }
 
 install_pathogen() {
@@ -102,6 +131,8 @@ main() {
     && install_pathogen \
     && check_for_dirs \
     && check_for_repos \
+    && install_YCM_Prereqs \
+    && compile_YCM \
     && install_vimrc
 }
 
