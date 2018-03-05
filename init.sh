@@ -30,7 +30,7 @@ install_vimrc() {
     echo "cloning Smithx10/dotfiles"
     git clone https://github.com/Smithx10/dotfiles
     echo "copying vimrc"
-    cp ./.vimrc ${HOME}/.vimrc
+    cp ./dotfiles/.vimrc ${HOME}/.vimrc
 }
 
 install_app() {
