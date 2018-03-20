@@ -7,16 +7,16 @@ APPS=(
     'vim'
     )
 REPOS=(
-    'https://github.com/Valloric/YouCompleteMe'
     'https://github.com/kien/ctrlp.vim' 
+    'https://github.com/Raimondi/delimitMate'
     'https://github.com/Yggdroot/indentLine'
     'https://github.com/scrooloose/nerdcommenter'
-    'https://github.com/ervandew/supertab'
     'https://github.com/ternjs/tern_for_vim'
     'https://github.com/tomtom/tlib_vim'
     'https://github.com/SirVer/ultisnips'
     'https://github.com/vim-airline/vim-airline'
     'https://github.com/honza/vim-snippets'
+    'https://github.com/Valloric/YouCompleteMe'
     )
 DIRS=(
     '/.vim'

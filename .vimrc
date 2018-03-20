@@ -1,4 +1,3 @@
-
 " pathogen config
 execute pathogen#infect()
 
@@ -28,7 +27,6 @@ let g:indentLine_char = '|'
 let g:indentLine_setConceal = 0
 
 " theme
-set termguicolors
 colorscheme onedark
 
 " snippet config
@@ -36,10 +34,20 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
+" youcompleteme configuration
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " airline configuration
 let g:airline#extensions#tabline#enabled = 1
 
+" nerdcommenter configuration
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+
 " custom mappings
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-B> :bprev<CR>
+nnoremap <C-Z> :bnext<CR>
+nnoremap <C-X> :bprev<CR>
+nnoremap <C-S-t> :tabprevious<CR>
+nnoremap <C-t>   :tabnext<CR>
