@@ -6,8 +6,8 @@ syntax on
 filetype plugin indent on
 set number
 set foldmethod=syntax
-set foldlevelstart=1
-let javaScript_fold=1
+set foldlevelstart=10
+let javaScript_fold=0
 
 " tab stops
 set expandtab       "Use softtabstop spaces instead of tab characters for indentation
