@@ -7,6 +7,13 @@ APPS=(
     'vim'
     )
 REPOS=(
+    'https://github.com/pangloss/vim-javascript'
+    'https://github.com/hashivim/vim-hashicorp-tools'
+    'https://github.com/fatih/vim-go'
+    'https://github.com/google/vim-glaive'
+    'https://github.com/leafgarland/typescript-vim'
+    'https://github.com/google/vim-codefmt'
+    'https://github.com/gutenye/json5.vim'
     'https://github.com/kien/ctrlp.vim' 
     'https://github.com/Raimondi/delimitMate'
     'https://github.com/Yggdroot/indentLine'
