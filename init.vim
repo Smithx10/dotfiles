@@ -34,7 +34,7 @@ let g:indentLine_char = '|'
 let g:indentLine_setConceal = 0
 
 " theme
-set termguicolors
+"set termguicolors
 set t_Co=256
 colorscheme gruvbox
 set background=dark
@@ -66,14 +66,19 @@ autocmd Filetype go noremap <C-E> :GoImports<CR>
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'none'
 " typescript
-autocmd Filetype typescript noremap <C-X> :TSDefPreview<CR>
+autocmd Filetype typescript noremap <C-X> :YcmCompleter GoTo<CR>
 autocmd Filetype typescript noremap <C-E> :PrettierAsync<CR>
 let g:nvim_typescript#javascript_support = 1
 
 " javascript
-autocmd Filetype javascript noremap <C-X> :TSDefPreview<CR>
+autocmd Filetype javascript noremap <C-X> :YcmCompleter GoTo<CR>
 autocmd Filetype javascript noremap <C-E> :PrettierAsync<CR>
+let b:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = { 'javascript': ['prettier']}
+let g:ale_fix_on_save = 1
 
+
+" yaml 
 au BufRead,BufNewFile *.yaml.ctmpl,*yml.ctmpl set filetype=yaml
 
 " Multiple_cursors
@@ -90,12 +95,13 @@ endfunction
 " Global
 noremap <C-M> :bnext!<CR>
 noremap <C-N> :bprev!<CR>
-noremap <C-L> :update<CR>
+noremap <C-L> :write!<CR>
 noremap <C-H> :noh<CR>
 noremap <C-Q> :bdelete!<CR>
 noremap <C-\> :pc<CR>
-noremap <C-E> :FormatCode<CR>
+noremap <C-E> :PrettierAsync<CR>
 noremap <C-P> :Files<CR>
 nmap <C-f> ysiw
 nmap <C-g> ds
+
 

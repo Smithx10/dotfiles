@@ -1,35 +1,36 @@
 #!/usr/bin/env bash
 OS=$(uname)
+NVIMPATH="${HOME}/.config/nvim"
+BUNDLEPATH="${NVIMPATH}/bundle"
 APPS=(
     'curl'
     'git' 
     'tmux'
-    'vim'
+    'neovim'
+    'Development Tools'
     )
 REPOS=(
-    'https://github.com/pangloss/vim-javascript'
-    'https://github.com/hashivim/vim-hashicorp-tools'
+    'https://github.com/Valloric/YouCompleteMe'
+    'https://github.com/terryma/vim-multiple-cursors'
+    'https://github.com/prettier/vim-prettier'
+    'https://github.com/mhinz/vim-signify'
+    'https://github.com/tpope/vim-surround'
+    'https://github.com/AndrewRadev/splitjoin.vim'
+    'https://github.com/junegunn/fzf.vim'
+    'https://github.com/junegunn/fzf'
+    'https://github.com/SirVer/ultisnips'
     'https://github.com/fatih/vim-go'
-    'https://github.com/google/vim-glaive'
-    'https://github.com/leafgarland/typescript-vim'
-    'https://github.com/google/vim-codefmt'
-    'https://github.com/gutenye/json5.vim'
-    'https://github.com/kien/ctrlp.vim' 
-    'https://github.com/Raimondi/delimitMate'
     'https://github.com/Yggdroot/indentLine'
     'https://github.com/scrooloose/nerdcommenter'
-    'https://github.com/ternjs/tern_for_vim'
-    'https://github.com/tomtom/tlib_vim'
-    'https://github.com/SirVer/ultisnips'
     'https://github.com/vim-airline/vim-airline'
-    'https://github.com/honza/vim-snippets'
-    'https://github.com/Valloric/YouCompleteMe'
+    'https://github.com/morhetz/gruvbox'
+    'https://github.com/w0rp/ale'
     )
 DIRS=(
-    '/.vim'
-    '/.vim/bundle'
-    '/.vim/autoload'
-    '/.vim/colors'
+    "${NVIMPAT}"
+    "${BUNDLEPATH}"
+    /.vim/autoload
+    /.vim/colors
     )
 
 install_vimrc() {
@@ -43,7 +44,7 @@ install_vimrc() {
 }
 
 compile_YCM() {
-    cd ${HOME}/.vim/bundle/YouCompleteMe
+    cd ${BUNDLEPATH}/YouCompleteMe
     git submodule update --init --recursive
     ./install.py --all
 }
@@ -114,11 +115,11 @@ check_for_apps() {
 check_for_repos() {
     for REPO in "${REPOS[@]}"; do
         REPODIR=$(echo $REPO | rev | cut -d\/ -f1 | rev)
-        if [[ ! -d ${HOME}/.vim/bundle/${REPODIR} ]]; then
+        if [[ ! -d ${BUNDLEPATH}/${REPODIR} ]]; then
             echo "git cloning the repos into bundle"
-            git clone $REPO ${HOME}/.vim/bundle/${REPODIR}
+            git clone $REPO ${BUNDLEPATH}/${REPODIR}
         else 
-            echo "${HOME}/.vim/bundle/${REPODIR} already exists"
+            echo "${BUNDLEPATH}/${REPODIR} already exists"
         fi
     done
 }
@@ -144,5 +145,6 @@ main() {
     && install_vimrc
 }
 
-main
+${@}
+
 
